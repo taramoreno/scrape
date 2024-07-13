@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+	<meta name = "viewport" content = "width=device-width, initial-scale = 1">
+    <title>Pretraga tehnike </title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Montserrat">
+	<link href="/static/bootstrap.min.css" rel="stylesheet" media="screen">
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<script src="/static/bootstrap.bundle.min.js"></script>
+
+	<style>
+		
+        .container-fluid {
+			position:relative;
+            background: url("static/img/center-bg.png") no-repeat center center;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            padding-top: 230px;
+            padding-bottom: 280px;
+			padding-right: 50px;
+            color: #212121;	
+			font-family: 'Montserrat', serif;
+	    }
+		
+		.header-1{
+			font-family: 'Alfa Slab One',serif;
+		}
+		
+		footer{
+			font-family: 'Montserrat', serif;
+			color: white;
+			padding-top: 30px;
+			padding-bottom: 20px;
+		}
+		
+		a {
+			color: #A7CAE2;
+		}
+		a:hover {
+			color: #6AC0CD;
+		}
+		
+	</style>	
+</head>
+
+<body>
+
+<div class = "container-fluid bg-1 text-right">
+    <h1 class = "header-1"> Simultana pretraga sajtova za tehniku </h1>  
+	
+	<form method="POST">
+		<span class = "websites" data-trigger = "hover" data-content="Mozete izabrati samo dva sajta!" data-placement="bottom">
+		<label class = "mr-2">Tehnomanija
+			{%if 't' in izabrane%}
+			<input type="checkbox" checked="checked" name="tehnomanija" class = "checkbox">
+			{% else %}
+			<input type="checkbox"  name="tehnomanija">
+			{%endif%}
+		</label>
+		
+		<label class = "mr-2">Gigatron
+			{%if 'g' in izabrane%}
+			<input type="checkbox" checked="checked" name="gigatron">
+			{% else %}
+			<input type="checkbox"  name="gigatron">
+			{%endif%} 
+		</label>
+		
+		<label class = "mr-3" >WinWin
+			{%if 'w' in izabrane%}
+			<input type="checkbox" checked="checked" name="winwin">
+			{% else %}
+			<input type="checkbox"  name="winwin">
+			{%endif%}
+		</label>
+		</span>		
+		<input name="text" class = "mr-1"> 
+		<input type='submit' id='submit' class='btn btn-primary mb-3 mt-3' value='pretrazi ' onclick="alert_firme()">			
+	</form>
+</div>
+<footer class = "footer bg-dark text-center">
+    <p class = "footer-content">
+        made by <a href="https://github.com/andrijaz">@andrijaz</a> and <a href = "https://github.com/soleova"> @soleova
+    </p> 
+</footer>
+
+<script type="text/javascript">
+function btn_search(search_id) {
+
+    	document.getElementById("input_field").value = document.getElementById( search_id ).value;
+    	document.getElementById("submit").click();
+}
+function alert_firme(){
+	var numberOfChecked = $('input:checkbox:checked').length;
+	if( numberOfChecked == 3 || numberOfChecked == 1){
+			alert("Mozete izabrati samo 2 firme")
+	}
+}
+
+$(".websites").popover({ trigger: "hover" });
+
+</script>
+</body>
+</html>
